@@ -4,6 +4,7 @@ import re
 from typing import Dict, List, Any, Optional
 import docx
 import PyPDF2
+import pdfplumber
 import logging
 
 class DocumentParser:
@@ -57,21 +58,45 @@ class DocumentParser:
             raise Exception(f"Failed to parse document: {str(e)}")
     
     def _extract_from_pdf(self, uploaded_file) -> str:
-        """Extract text from PDF file."""
+        """Extract text from PDF file using pdfplumber with PyPDF2 fallback."""
+        text_content = ""
+        
+        # First try with pdfplumber (more reliable)
         try:
+            with pdfplumber.open(uploaded_file) as pdf:
+                for page in pdf.pages:
+                    page_text = page.extract_text()
+                    if page_text:
+                        text_content += page_text + "\n"
+            
+            if text_content.strip():
+                return text_content
+        except Exception as e:
+            logging.warning(f"pdfplumber extraction failed: {str(e)}, trying PyPDF2")
+        
+        # Fallback to PyPDF2
+        try:
+            # Reset file pointer
+            uploaded_file.seek(0)
             pdf_reader = PyPDF2.PdfReader(uploaded_file)
             text_content = ""
             
             for page in pdf_reader.pages:
-                text_content += page.extract_text() + "\n"
+                page_text = page.extract_text()
+                if page_text:
+                    text_content += page_text + "\n"
             
-            if not text_content.strip():
-                raise ValueError("No text could be extracted from PDF")
+            if text_content.strip():
+                return text_content
                 
-            return text_content
-            
         except Exception as e:
-            raise Exception(f"PDF extraction failed: {str(e)}")
+            logging.warning(f"PyPDF2 extraction also failed: {str(e)}")
+        
+        # If both methods fail
+        if not text_content.strip():
+            raise ValueError("No text could be extracted from PDF. The PDF might be image-based or encrypted. Please try a different PDF or convert it to text format.")
+            
+        return text_content
     
     def _extract_from_docx(self, uploaded_file) -> str:
         """Extract text from DOCX file."""

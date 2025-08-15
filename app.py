@@ -120,8 +120,24 @@ if uploaded_file is not None:
                 st.success("Document analysis completed successfully!")
                 
             except Exception as e:
-                st.error(f"Error processing document: {str(e)}")
-                st.exception(e)
+                error_msg = str(e)
+                if "No text could be extracted" in error_msg:
+                    st.error("📄 **PDF Processing Issue**")
+                    st.warning("The uploaded PDF couldn't be processed. This might happen if:")
+                    st.write("• The PDF contains only images (scanned documents)")
+                    st.write("• The PDF is password-protected or encrypted")
+                    st.write("• The PDF is corrupted or in an unsupported format")
+                    st.info("💡 **Suggestion:** Try converting your PDF to a Word document (.docx) or plain text (.txt) file.")
+                elif "unsupported file" in error_msg.lower():
+                    st.error("📁 **Unsupported File Format**")
+                    st.info("Please upload a PDF (.pdf), Word document (.docx), or plain text (.txt) file.")
+                else:
+                    st.error(f"🚨 **Processing Error:** {error_msg}")
+                    st.info("Please try uploading a different document or contact support if the issue persists.")
+                
+                # Show detailed error in expander for debugging
+                with st.expander("🔧 Technical Details (for debugging)"):
+                    st.exception(e)
 
 # Display results if available
 if st.session_state.audit_results:
