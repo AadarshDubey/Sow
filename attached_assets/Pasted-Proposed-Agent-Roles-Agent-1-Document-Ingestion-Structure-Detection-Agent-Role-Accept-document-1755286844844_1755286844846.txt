@@ -1,0 +1,107 @@
+Proposed Agent Roles
+Agent 1 — Document Ingestion & Structure Detection Agent
+Role:
+
+Accept document input (PDF, DOCX, TXT)
+
+Extract plain text + metadata (tables, headings, bullet lists)
+
+Split into sections based on headings (Scope, Deliverables, Pricing, etc.)
+
+Tech: python-docx, PyMuPDF, or pdfplumber + regex + spaCy section classifiers
+
+Output: JSON “document structure” with sections and their text content
+
+Agent 2 — Standard Section Validator Agent
+Role:
+
+Compare extracted sections to a company-approved template
+
+Verify presence of all mandatory SoW parts:
+
+Objectives
+
+Scope of Work
+
+Deliverables
+
+Milestones / Timeline
+
+Payment terms
+
+Acceptance criteria
+
+Assumptions / Dependencies
+
+Change Control and Out of Scope clauses
+
+Output: Checklist with ✅ present / ❌ missing sections
+
+Agent 3 — Vagueness & Ambiguity Detector Agent
+Role:
+
+Use rule-based + LLM techniques to detect:
+
+Placeholder symbols (#, ~, etc.)
+
+Words like “few”, “some”, “etc.”, “if required”
+
+Missing quantities and unclear measurements
+
+Multi-interpretation nouns (“tables” without context)
+
+Use regex for fast pattern checks; LLM for context-based ambiguity flagging
+
+Output: List of ambiguous statements + LLM-suggested clarifications
+
+Agent 4 — Scope Creep Risk Assessor Agent
+Role:
+
+Based on deliverables, highlight where client could expand scope without cost renegotiation
+
+Estimate relative impact (Low / Medium / High) based on:
+
+Missing upper bounds
+
+May-grow tasks (“as needed”)
+
+Non-exclusive statements (“additional tasks may be performed”)
+
+Output: Risk score & flagged clauses
+
+Agent 5 — Language & Formatting Quality Agent
+Role:
+
+Spell check, grammar correction
+
+Capitalization consistency (e.g., “AWS redshift” → “AWS Redshift”)
+
+Numbering & bullet formatting fixes
+
+Output: Cleaned version OR “track changes” style edit suggestions
+
+Agent 6 — Contract Redline Generator Agent
+Role:
+
+Take inputs from all agents above and rewrite risky/vague parts in a clear, quantified, client-friendly form
+
+Maintain professional/legal tone
+
+Output: SoW draft v2 + Redline comparison report that shows what changed
+
+Agent 7 — Final Report Composer Agent
+Role:
+
+Aggregate all agents’ outputs into a single SoW Audit Report
+
+Include:
+
+Structure completeness score
+
+Specificity score
+
+Risk rating
+
+Suggestions
+
+Export as PDF/HTML
