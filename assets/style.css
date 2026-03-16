@@ -1,0 +1,1251 @@
+/* ==========================================================================
+   SoW Audit Pro - Modern SaaS Dashboard Stylesheet
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS Variables & Design System
+   ========================================================================== */
+:root {
+    /* Primary Palette */
+    --primary: #1f77b4;
+    --primary-hover: #1a5f8f;
+    --primary-light: #e8f4fc;
+    --primary-gradient: linear-gradient(135deg, #1f77b4 0%, #2d8ac7 100%);
+    
+    /* Semantic Colors */
+    --success: #28a745;
+    --success-light: #d4edda;
+    --warning: #ffc107;
+    --warning-light: #fff3cd;
+    --danger: #dc3545;
+    --danger-light: #f8d7da;
+    --info: #17a2b8;
+    --info-light: #d1ecf1;
+    
+    /* Neutral Grays */
+    --gray-50: #f8f9fa;
+    --gray-100: #f1f3f4;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    
+    /* Text Colors */
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --text-light: #666666;
+    
+    /* Background Colors */
+    --bg-body: #ffffff;
+    --bg-section: #f8f9fa;
+    --bg-card: #ffffff;
+    --bg-hover: #f1f3f4;
+    
+    /* Border & Shadow */
+    --border-color: #e0e0e0;
+    --border-light: #e9ecef;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.1);
+    
+    /* Spacing Scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Monaco', monospace;
+    
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease-out;
+    --transition-normal: 0.2s ease-out;
+    --transition-slow: 0.3s ease-out;
+}
+
+/* ==========================================================================
+   2. Global Styles & Typography
+   ========================================================================== */
+
+/* Hide default Streamlit sidebar */
+[data-testid="stSidebar"] {
+    display: none;
+}
+
+/* Global box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Base typography */
+body {
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Streamlit overrides for better typography */
+.stMarkdown p {
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   3. Tailwind-Style Utility Classes
+   ========================================================================== */
+
+/* -- Spacing: Margin Top -- */
+.mt-1 { margin-top: var(--space-1) !important; }
+.mt-2 { margin-top: var(--space-2) !important; }
+.mt-3 { margin-top: var(--space-3) !important; }
+.mt-4 { margin-top: var(--space-4) !important; }
+.mt-5 { margin-top: var(--space-5) !important; }
+.mt-6 { margin-top: var(--space-6) !important; }
+.mt-8 { margin-top: var(--space-8) !important; }
+
+/* -- Spacing: Margin Bottom -- */
+.mb-1 { margin-bottom: var(--space-1) !important; }
+.mb-2 { margin-bottom: var(--space-2) !important; }
+.mb-3 { margin-bottom: var(--space-3) !important; }
+.mb-4 { margin-bottom: var(--space-4) !important; }
+.mb-5 { margin-bottom: var(--space-5) !important; }
+.mb-6 { margin-bottom: var(--space-6) !important; }
+.mb-8 { margin-bottom: var(--space-8) !important; }
+
+/* -- Spacing: Padding -- */
+.p-2 { padding: var(--space-2) !important; }
+.p-3 { padding: var(--space-3) !important; }
+.p-4 { padding: var(--space-4) !important; }
+.p-5 { padding: var(--space-5) !important; }
+.p-6 { padding: var(--space-6) !important; }
+
+.px-2 { padding-left: var(--space-2) !important; padding-right: var(--space-2) !important; }
+.px-3 { padding-left: var(--space-3) !important; padding-right: var(--space-3) !important; }
+.px-4 { padding-left: var(--space-4) !important; padding-right: var(--space-4) !important; }
+.px-5 { padding-left: var(--space-5) !important; padding-right: var(--space-5) !important; }
+.px-6 { padding-left: var(--space-6) !important; padding-right: var(--space-6) !important; }
+
+.py-2 { padding-top: var(--space-2) !important; padding-bottom: var(--space-2) !important; }
+.py-3 { padding-top: var(--space-3) !important; padding-bottom: var(--space-3) !important; }
+.py-4 { padding-top: var(--space-4) !important; padding-bottom: var(--space-4) !important; }
+.py-5 { padding-top: var(--space-5) !important; padding-bottom: var(--space-5) !important; }
+.py-6 { padding-top: var(--space-6) !important; padding-bottom: var(--space-6) !important; }
+
+/* -- Typography Utilities -- */
+.text-xs { font-size: 0.75rem !important; }
+.text-sm { font-size: 0.875rem !important; }
+.text-base { font-size: 1rem !important; }
+.text-lg { font-size: 1.125rem !important; }
+.text-xl { font-size: 1.25rem !important; }
+.text-2xl { font-size: 1.5rem !important; }
+.text-3xl { font-size: 1.875rem !important; }
+
+.font-normal { font-weight: 400 !important; }
+.font-medium { font-weight: 500 !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-bold { font-weight: 700 !important; }
+
+.text-primary { color: var(--primary) !important; }
+.text-success { color: var(--success) !important; }
+.text-warning { color: var(--warning) !important; }
+.text-danger { color: var(--danger) !important; }
+.text-muted { color: var(--text-muted) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+
+.uppercase { text-transform: uppercase !important; }
+.lowercase { text-transform: lowercase !important; }
+.capitalize { text-transform: capitalize !important; }
+
+.tracking-wide { letter-spacing: 0.025em !important; }
+.tracking-wider { letter-spacing: 0.05em !important; }
+
+/* -- Flexbox Utilities -- */
+.flex { display: flex !important; }
+.inline-flex { display: inline-flex !important; }
+.flex-col { flex-direction: column !important; }
+.flex-row { flex-direction: row !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+
+.items-start { align-items: flex-start !important; }
+.items-center { align-items: center !important; }
+.items-end { align-items: flex-end !important; }
+.items-stretch { align-items: stretch !important; }
+
+.justify-start { justify-content: flex-start !important; }
+.justify-center { justify-content: center !important; }
+.justify-end { justify-content: flex-end !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-around { justify-content: space-around !important; }
+
+.flex-center { 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.flex-1 { flex: 1 1 0% !important; }
+.flex-auto { flex: 1 1 auto !important; }
+.flex-none { flex: none !important; }
+
+.gap-1 { gap: var(--space-1) !important; }
+.gap-2 { gap: var(--space-2) !important; }
+.gap-3 { gap: var(--space-3) !important; }
+.gap-4 { gap: var(--space-4) !important; }
+.gap-5 { gap: var(--space-5) !important; }
+.gap-6 { gap: var(--space-6) !important; }
+
+/* -- Layout Utilities -- */
+.w-full { width: 100% !important; }
+.h-full { height: 100% !important; }
+.max-w-xl { max-width: 36rem !important; }
+.max-w-2xl { max-width: 42rem !important; }
+.max-w-3xl { max-width: 48rem !important; }
+.max-w-4xl { max-width: 56rem !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+/* -- Card Base -- */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card-shadow {
+    box-shadow: var(--shadow-md);
+}
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* -- Border Radius -- */
+.rounded { border-radius: var(--radius-sm) !important; }
+.rounded-md { border-radius: var(--radius-md) !important; }
+.rounded-lg { border-radius: var(--radius-lg) !important; }
+.rounded-xl { border-radius: var(--radius-xl) !important; }
+.rounded-full { border-radius: var(--radius-full) !important; }
+
+/* -- Visibility -- */
+.hidden { display: none !important; }
+.visible { visibility: visible !important; }
+.invisible { visibility: hidden !important; }
+
+/* ==========================================================================
+   4. Top Navigation Bar
+   ========================================================================== */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity var(--transition-fast);
+}
+
+.brand-logo:hover {
+    opacity: 0.85;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.nav-links a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   5. Hero Section
+   ========================================================================== */
+.hero-section {
+    text-align: center;
+    padding: 2.5rem 1rem 2rem 1rem;
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(31, 119, 180, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+}
+
+.hero-value-prop {
+    font-size: 1.05rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-light);
+    border-radius: var(--radius-full);
+    display: inline-block;
+}
+
+.hero-cta {
+    margin-top: 1.25rem;
+}
+
+.sample-link {
+    font-size: 0.9rem;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.sample-link:hover {
+    background: var(--primary-light);
+    text-decoration: none;
+}
+
+.sample-link:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   6. Configuration Card
+   ========================================================================== */
+.config-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.config-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.config-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.config-section-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.helper-text {
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}
+
+.file-info {
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    border: 1px solid var(--border-light);
+}
+
+.file-info-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.file-info-item:last-child {
+    border-bottom: none;
+}
+
+.file-info-label {
+    color: var(--text-muted);
+}
+
+.file-info-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   7. Feature Cards Section
+   ========================================================================== */
+.feature-section {
+    background: linear-gradient(180deg, var(--gray-50) 0%, var(--bg-body) 100%);
+    padding: 2.5rem 0;
+    margin: 2.5rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.feature-section-title {
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    height: 100%;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(31, 119, 180, 0.02) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.feature-card:hover::after {
+    opacity: 1;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.75rem;
+    background: var(--primary-light);
+    border-radius: var(--radius-md);
+}
+
+.feature-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.feature-list li::before {
+    content: "✓";
+    color: var(--success);
+    font-weight: bold;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+/* ==========================================================================
+   8. How It Works Section (Stepper)
+   ========================================================================== */
+.how-it-works {
+    background: var(--gray-100);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0;
+    border: 1px solid var(--border-light);
+}
+
+.how-it-works-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.step-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    max-width: 160px;
+    min-width: 120px;
+    padding: 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.step:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.step-icon {
+    font-size: 2rem;
+    margin-bottom: 0.625rem;
+    display: block;
+}
+
+.step-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.step-arrow {
+    color: var(--gray-400);
+    font-size: 1.75rem;
+    font-weight: 300;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   9. Tags / Badges (Ideal For Section)
+   ========================================================================== */
+.ideal-for {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+
+.ideal-for strong {
+    color: var(--text-secondary);
+    margin-right: 0.5rem;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--gray-100);
+    border: 1px solid var(--border-light);
+    padding: 0.4rem 0.95rem;
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0.25rem;
+    transition: all var(--transition-fast);
+}
+
+.tag:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.tag-icon {
+    font-size: 0.9rem;
+}
+
+/* Tag variants */
+.tag-primary {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.tag-success {
+    background: var(--success-light);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.tag-warning {
+    background: var(--warning-light);
+    border-color: var(--warning);
+    color: #856404;
+}
+
+.tag-danger {
+    background: var(--danger-light);
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* ==========================================================================
+   10. Buttons
+   ========================================================================== */
+
+/* Primary Button Enhancement */
+.stButton > button[kind="primary"],
+.stButton > button[data-testid="stBaseButton-primary"] {
+    background: var(--primary-gradient) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 2rem !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 2px 8px rgba(31, 119, 180, 0.3) !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.stButton > button[kind="primary"]:hover,
+.stButton > button[data-testid="stBaseButton-primary"]:hover {
+    transform: translateY(-2px) scale(1.01) !important;
+    box-shadow: 0 6px 16px rgba(31, 119, 180, 0.4) !important;
+}
+
+.stButton > button[kind="primary"]:active,
+.stButton > button[data-testid="stBaseButton-primary"]:active {
+    transform: translateY(0) scale(0.99) !important;
+}
+
+.stButton > button[kind="primary"]:focus,
+.stButton > button[data-testid="stBaseButton-primary"]:focus {
+    outline: 3px solid rgba(31, 119, 180, 0.5) !important;
+    outline-offset: 2px !important;
+}
+
+/* Secondary Button */
+.stButton > button[kind="secondary"],
+.stButton > button:not([kind="primary"]):not([data-testid="stBaseButton-primary"]) {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    padding: 0.625rem 1.5rem !important;
+    border-radius: var(--radius-md) !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.stButton > button[kind="secondary"]:hover,
+.stButton > button:not([kind="primary"]):not([data-testid="stBaseButton-primary"]):hover {
+    background: var(--gray-50) !important;
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+    transform: translateY(-1px) !important;
+}
+
+.stButton > button:focus {
+    outline: 2px solid var(--primary) !important;
+    outline-offset: 2px !important;
+}
+
+/* Disabled Button */
+.stButton > button:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+/* ==========================================================================
+   11. Results Section
+   ========================================================================== */
+.results-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-light);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   12. Metrics Cards
+   ========================================================================== */
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.metric-card:hover::before {
+    transform: scaleX(1);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.metric-delta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-full);
+    display: inline-block;
+}
+
+.metric-delta-positive {
+    background: var(--success-light);
+    color: var(--success);
+}
+
+.metric-delta-negative {
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+/* Streamlit native metric styling */
+[data-testid="stMetric"] {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+}
+
+[data-testid="stMetricLabel"] {
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+[data-testid="stMetricValue"] {
+    color: var(--primary) !important;
+    font-weight: 800 !important;
+}
+
+/* ==========================================================================
+   13. Tabs
+   ========================================================================== */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 0;
+}
+
+.stTabs [data-baseweb="tab"] {
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+    background: transparent !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    border: 1px solid transparent !important;
+    border-bottom: none !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--primary) !important;
+    background: var(--primary-light) !important;
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    color: var(--primary) !important;
+    background: var(--bg-card) !important;
+    border-color: var(--border-light) !important;
+    border-bottom-color: var(--bg-card) !important;
+    position: relative;
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"]::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+}
+
+.stTabs [data-baseweb="tab"]:focus {
+    outline: 2px solid var(--primary) !important;
+    outline-offset: 2px !important;
+}
+
+/* ==========================================================================
+   14. Expanders
+   ========================================================================== */
+.streamlit-expanderHeader {
+    background: var(--gray-50) !important;
+    border-radius: var(--radius-md) !important;
+    font-weight: 600 !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.streamlit-expanderHeader:hover {
+    background: var(--primary-light) !important;
+    color: var(--primary) !important;
+}
+
+.streamlit-expanderContent {
+    border: 1px solid var(--border-light);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    padding: 1rem;
+}
+
+/* ==========================================================================
+   15. Footer
+   ========================================================================== */
+.custom-footer {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-light);
+    margin-top: 3rem;
+    background: linear-gradient(180deg, transparent 0%, var(--gray-50) 100%);
+}
+
+.custom-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    margin: 0 0.75rem;
+    padding: 0.25rem 0;
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.custom-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--primary);
+    transition: width var(--transition-normal);
+}
+
+.custom-footer a:hover {
+    color: var(--primary-hover);
+}
+
+.custom-footer a:hover::after {
+    width: 100%;
+}
+
+.custom-footer a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   16. Upload Area
+   ========================================================================== */
+.upload-info {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+[data-testid="stFileUploader"] {
+    border: 2px dashed var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 1rem !important;
+    transition: all var(--transition-fast) !important;
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--primary) !important;
+    background: var(--primary-light) !important;
+}
+
+/* ==========================================================================
+   17. Dividers
+   ========================================================================== */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    margin: 1.5rem 0;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: var(--border-light);
+    margin: 1.5rem 0;
+}
+
+/* ==========================================================================
+   18. Alerts & Notifications
+   ========================================================================== */
+.stSuccess {
+    background: var(--success-light) !important;
+    border-left: 4px solid var(--success) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+.stWarning {
+    background: var(--warning-light) !important;
+    border-left: 4px solid var(--warning) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+.stError {
+    background: var(--danger-light) !important;
+    border-left: 4px solid var(--danger) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+.stInfo {
+    background: var(--info-light) !important;
+    border-left: 4px solid var(--info) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+/* ==========================================================================
+   19. Checkbox Styling
+   ========================================================================== */
+.stCheckbox {
+    transition: all var(--transition-fast);
+}
+
+.stCheckbox:hover {
+    background: var(--gray-50);
+    border-radius: var(--radius-sm);
+}
+
+.stCheckbox label {
+    font-weight: 500 !important;
+}
+
+/* ==========================================================================
+   20. Progress Bar
+   ========================================================================== */
+.stProgress > div > div {
+    background: var(--primary-gradient) !important;
+    border-radius: var(--radius-full) !important;
+}
+
+/* ==========================================================================
+   21. Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-value-prop {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .config-card {
+        padding: 1.25rem 1rem;
+    }
+    
+    .feature-card {
+        padding: 1.25rem;
+    }
+    
+    .step-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .step {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .top-nav {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .feature-section {
+        padding: 1.5rem 0;
+    }
+    
+    .how-it-works {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* ==========================================================================
+   22. Animations & Micro-interactions
+   ========================================================================== */
+
+/* Subtle pulse for important elements */
+@keyframes subtlePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.85;
+    }
+}
+
+/* Slide up animation for cards */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+}
+
+/* Staggered animation delay utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* Focus ring for accessibility */
+*:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================================================
+   23. Dark Mode Support (Optional - for future)
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+    /* Dark mode styles can be added here if needed */
+}
+
+/* ==========================================================================
+   24. Print Styles
+   ========================================================================== */
+@media print {
+    .top-nav,
+    .custom-footer,
+    .stButton,
+    [data-testid="stFileUploader"] {
+        display: none !important;
+    }
+    
+    .feature-card,
+    .config-card,
+    .metric-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}

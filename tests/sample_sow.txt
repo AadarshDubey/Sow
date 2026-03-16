@@ -1,0 +1,42 @@
+STATEMENT OF WORK
+
+Project: Enterprise Data Analytics Platform Migration
+
+1. PROJECT OBJECTIVES
+The objective of this project is to migrate the existing data analytics platform
+from on-premise infrastructure to AWS cloud. The goal is to improve system
+performance and provide a scalable solution for the organization.
+
+2. SCOPE OF WORK
+The vendor will provide the following services:
+- Migration of existing databases to AWS Redshift
+- Development of several ETL pipelines as needed
+- Configuration of appropriate monitoring tools
+- Setup of # dashboards for business users
+- Various training sessions for the IT team
+- Additional work may be performed if required by the client
+
+3. DELIVERABLES
+The following deliverables will be provided:
+- Build databases as per client requirements
+- Create approximately 5-10 reports and dashboards
+- Develop some API integrations with existing systems
+- Provide comprehensive documentation
+- Build a few automation scripts for deployment
+
+4. TIMELINE
+Phase 1: Discovery and Planning - 2 weeks
+Phase 2: Migration - TBD
+Phase 3: Testing - As needed
+Phase 4: Go Live - Subject to change based on client readiness
+
+5. ASSUMPTIONS AND DEPENDENCIES
+- The client will provide reasonable access to existing systems
+- All standard security protocols will be followed
+- The project team will have adequate resources
+- Client will provide timely feedback on deliverables
+
+Note: This SoW does not include an Acceptance Criteria section,
+a Pricing & Payment Terms section, or a Change Control Process section.
+
+END OF DOCUMENT

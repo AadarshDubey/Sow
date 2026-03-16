@@ -1,0 +1,6 @@
+pyproject.toml
+contract_audit.egg-info/PKG-INFO
+contract_audit.egg-info/SOURCES.txt
+contract_audit.egg-info/dependency_links.txt
+contract_audit.egg-info/requires.txt
+contract_audit.egg-info/top_level.txt

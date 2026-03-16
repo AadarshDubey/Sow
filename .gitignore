@@ -1,0 +1,15 @@
+# Environments
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Replit state
+.local/
+.replit
+
+# OS
+.DS_Store
