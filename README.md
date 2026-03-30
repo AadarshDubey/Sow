@@ -45,29 +45,29 @@ graph TD
     classDef agent fill:#ff9900,stroke:#333,stroke-width:2px,color:#fff;
     classDef system fill:#e0f7fa,stroke:#006064,stroke-width:2px;
 
-    User([👤 User]):::user -->|Uploads SoW (PDF/DOCX/TXT)| UI[💻 Streamlit UI]:::ui
-    UI -->|Extracts Text| DP[📄 Document Parser]:::backend
-    DP -->|Sends Text| AR[⚙️ Audit Runner]:::backend
+    User(["👤 User"]):::user -->|"Uploads SoW (PDF/DOCX/TXT)"| UI["💻 Streamlit UI"]:::ui
+    UI -->|"Extracts Text"| DP["📄 Document Parser"]:::backend
+    DP -->|"Sends Text"| AR["⚙️ Audit Runner"]:::backend
     
-    subgraph Google Agent Development Kit (ADK)
-        AR -->|Initializes Session| ORCH[🧠 Orchestrator Agent]:::agent
+    subgraph Google_ADK ["Google Agent Development Kit"]
+        AR -->|"Initializes Session"| ORCH["🧠 Orchestrator Agent"]:::agent
         
-        ORCH -->|Delegates Task| SA[📋 Section Agent]:::agent
-        ORCH -->|Delegates Task| VA[❓ Vagueness Agent]:::agent
-        ORCH -->|Delegates Task| RA[⚠️ Risk Agent]:::agent
-        ORCH -->|Delegates Task| QA[✏️ Quality Agent]:::agent
+        ORCH -->|"Delegates Task"| SA["📋 Section Agent"]:::agent
+        ORCH -->|"Delegates Task"| VA["❓ Vagueness Agent"]:::agent
+        ORCH -->|"Delegates Task"| RA["⚠️ Risk Agent"]:::agent
+        ORCH -->|"Delegates Task"| QA["✏️ Quality Agent"]:::agent
         
-        SA -.->|Missing Sections| ORCH
-        VA -.->|Ambiguities & Fixes| ORCH
-        RA -.->|Scope Risks & Mitigation| ORCH
-        QA -.->|Grammar & Tone Issues| ORCH
+        SA -.->|"Missing Sections"| ORCH
+        VA -.->|"Ambiguities & Fixes"| ORCH
+        RA -.->|"Scope Risks & Mitigation"| ORCH
+        QA -.->|"Grammar & Tone Issues"| ORCH
     end
     
-    ORCH -->|Compiles JSON Results| AR
-    AR -->|Updates State| UI
-    UI -->|Displays Dashboard Data| User
-    UI -->|Generates Redline Report| RG[📑 Report Generator]:::backend
-    RG -->|Downloads TXT/PDF| User
+    ORCH -->|"Compiles JSON Results"| AR
+    AR -->|"Updates State"| UI
+    UI -->|"Displays Dashboard Data"| User
+    UI -->|"Generates Redline Report"| RG["📑 Report Generator"]:::backend
+    RG -->|"Downloads TXT/PDF"| User
 ```
 
 ### Flow execution:
